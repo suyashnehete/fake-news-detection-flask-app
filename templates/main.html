@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News Detection</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="container">
+     <div class="login">
+	<h1>Predict Fake News</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="news" placeholder="Enter the news url" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+    </form>
+     {% if hasData %}
+         <p class="big">The news is {{ result }}.</p>
+         <br>
+         <br>
+   <p class="small">Real: {{ real }}</p>
+   <p class="small">Fake: {{ fake }}</p>
+   <p class="small">Random Forest Classifier : {{ rfc }}</p>
+   <p class="small">Support Vector Classifier : {{ svc }}</p>
+   <p class="small">Desicion Tree Classifier : {{ dtc }}</p>
+   <p class="small">Linear Regression Classifier : {{ lrc }}</p>
+   <p class="small">Naive Bayes Classifier : {{ nbc }}</p>
+   <p class="small">Passive Aggressive Classifier : {{ pac }}</p>
+   <p class="small">Stochastic Gradient Descent : {{ sgc }}</p>
+     {% endif %}
+ </div>
+ </div>
+
+
+</body>
+</html>
