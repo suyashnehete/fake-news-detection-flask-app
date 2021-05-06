@@ -6,3 +6,4 @@ random_forest_model.pkl
 sgd.pkl
 svm.pkl
 tp.py
+__pycache__
